@@ -39,11 +39,12 @@ function toolbarButton<T extends object>(
 }
 
 export function buildSchematicToolbar<T extends object>(ui: UiBuilder<T>, namespace: string) {
+  const optionsHint = { ...message("options.title", "Options"), suffix: " (O)" };
   return [
     ui.el("button", {
       type: "button", "data-schematic-open-options": true, "aria-haspopup": "dialog",
-      "aria-controls": `${namespace}-options`,
-      title: message("options.title", "Options"), "aria-label": message("options.title", "Options")
+      "aria-controls": `${namespace}-options`, "aria-keyshortcuts": "O",
+      title: optionsHint, "aria-label": optionsHint
     }, ui.toolbarIcon(optionsIcon)),
     toolbarButton(ui, "library", "Library", "", namespaceSvgIds(libraryIcon, `${namespace}-library`)),
     toolbarButton(ui, "instance", "Instance", "i", namespaceSvgIds(instanceIcon, `${namespace}-instance`), "tool"),

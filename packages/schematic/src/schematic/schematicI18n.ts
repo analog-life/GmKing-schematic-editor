@@ -27,6 +27,7 @@ const ZH: Record<string, string> = {
   "agent.suspended": "连接已暂停。",
   "agent.prompt": "给 AI Agent 的文本",
   "agent.local": "先运行 npm run agent:connector 启动本机连接器，再将配对提示词复制给 AI。配对码两分钟内有效，配对成功后会话最长持续两小时。",
+  "agent.currentStatus": "当前状态：{status}",
   "agent.manual": "人工编辑",
   "agent.waiting": "等待 AI 配对",
   "agent.connected": "AI 已连接",

@@ -1,6 +1,6 @@
-# GmKing
+# GmKing Schematic Editor
 
-Draw electronic circuits with connected wires, editable symbols, labels, notes, Undo/Redo, and SVG/PNG clipboard export.
+The current release baseline is **1.0.1-beta**. Draw circuits with connected wires, editable symbols, hierarchical sheets and buses, layers, and plain-text notes with TeX. The Web editor provides SPICE and Spectre netlists, symbolic analysis, JSON import/export, and SVG/PNG export.
 
 - **Web editor:** `apps/web`; browser-local storage and JSON import/export.
 - **Embeddable library:** `packages/schematic`; [API and embedding](packages/schematic/README.md).
@@ -25,8 +25,14 @@ Build with `npm run build`. Copy `main.js`, `styles.css`, and `manifest.json` fr
 
 ## Hosting and data
 
-Host `apps/web/dist` on a static server. Web documents stay in that browser; export JSON for backups or transfer. Web formula rendering loads MathJax from jsDelivr and needs a network connection. The Obsidian plugin uses Obsidian's rendering APIs. Clipboard features depend on host permissions; Web clipboard access generally needs HTTPS or localhost.
+Host `apps/web/dist` on a static server using relative asset paths. Web documents stay in that browser; export JSON for backups or transfer. Web formula rendering loads a bundled MathJax 4.1.3 script from the same origin when first needed. The Obsidian plugin uses Obsidian's rendering APIs. Clipboard features depend on host permissions; Web clipboard access generally needs HTTPS or localhost.
 
-In **Options**, **Language** switches the editor between English (default) and Simplified Chinese. **Color mode** follows the system by default and can be set to Light or Dark. These preferences are stored in this browser's local storage and are shared with the bundled manual opened by **Help**. They are outside the schematic document. **Options** also contains the symbol template setting.
+The standalone Web build defaults to English and follows the system color scheme. Press **O** or use the gear to open **Options**, which controls language, color mode, text font, process, symbol template, wire crossings, and wire angle. Language and color preferences are stored in the browser and shared with the bundled manual. The Analog Tools site has its own deployment shell and defaults to Simplified Chinese.
+
+Optional AI collaboration uses a local loopback connector launched with `npm run agent:connector`. Pair with the editor's **AI** panel. Its **Current status** line follows manual editing, pairing, connection, suspension, and offline states. The page keeps the schematic and applies revision-checked edits through its existing undo history.
+
+## Development
+
+Read [AGENTS.md](AGENTS.md) for maintenance requirements. In the Analog Tools workspace, see `docs/schematic-editor/handoff.md` in the outer repository for release status, targeted tests, and site deployment. Use `npm run test:note` for TeX notes and `npm run test:web-performance` for Web chunking and lazy formula loading.
 
 MIT © 2026 RarityBrown. Dependencies retain their own licenses; see [third-party notices](THIRD_PARTY_NOTICES.md).

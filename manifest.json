@@ -1,7 +1,7 @@
 {
   "id": "schematic-editor",
   "name": "GmKing",
-  "version": "1.0.0-beta",
+  "version": "1.0.1-beta",
   "minAppVersion": "1.13.4",
   "description": "Draw and edit electronic circuit schematics inside your notes.",
   "author": "RarityBrown",

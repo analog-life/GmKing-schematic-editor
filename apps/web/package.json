@@ -1,6 +1,6 @@
 {
   "name": "@edahelper/schematic-web",
-  "version": "1.0.0-beta",
+  "version": "1.0.1-beta",
   "private": true,
   "type": "module",
   "scripts": {
@@ -9,7 +9,7 @@
     "preview": "vite preview --host 127.0.0.1 --port 8001"
   },
   "dependencies": {
-    "@edahelper/schematic": "1.0.0-beta"
+    "@edahelper/schematic": "1.0.1-beta"
   },
   "devDependencies": {
     "vite": "^7.3.6",

@@ -2,6 +2,13 @@
 
 These rules apply to the independent schematic library, standalone Web workspace, and Obsidian plugin.
 
+## Maintenance
+
+- The release baseline is `1.0.1-beta`. Start by checking the branch, Git status, and existing changes. In the Analog Tools workspace, read `docs/schematic-editor/handoff.md` from the outer repository.
+- Make the smallest change that fully resolves the request. Use the existing entry points and shared models. Keep unrelated refactors, formatting, dependency upgrades, schema changes, and generated artifacts out of the patch.
+- Run the focused checks for the behavior you changed, including affected hosts. Expand coverage for shared paths or release work. Report the checks you ran and any scenarios you could not verify.
+- Keep Web assets local and relative-path safe. Preserve lazy MathJax and JointJS chunk cache stability. Sync `app/schematic/` in the outer repository only when site release work is in scope.
+
 ## Architecture
 
 - Keep editor UI and host adapters, schematic document and connectivity models, rendering, and symbolic analysis in separate modules. Keep renderer-specific details in rendering modules; do not put JointJS cell construction, SVG serialization, or symbolic analysis into catalog definitions.

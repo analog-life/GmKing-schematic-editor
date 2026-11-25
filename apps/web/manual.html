@@ -47,12 +47,12 @@
         <section>
           <h2>Work with an AI Agent</h2>
           <p>Run <code>npm run agent:connector</code> from the Schematic Editor source folder. In the editor, choose <strong>AI → Hand off to AI → Copy text</strong> and paste the prompt into your local Agent. Allow local network access if the browser asks. Pairing uses a two-minute, single-use code. A paired session lasts up to two hours.</p>
-          <p>When paired, the green bar shows <strong>AI connected</strong>. You can edit normally. AI transactions use the latest project revision and enter the same Undo history. <strong>Suspend</strong> pauses AI access. <strong>Disconnect</strong> and <strong>Reclaim editing</strong> both revoke the session. The connector only listens on this computer.</p>
+          <p>The dialog's <strong>Current status</strong> line follows manual editing, pairing, connection, suspension, and offline states. When paired, the green bar shows <strong>AI connected</strong>. You can edit normally. AI transactions use the latest project revision and enter the same Undo history. <strong>Suspend</strong> pauses AI access. <strong>Disconnect</strong> and <strong>Reclaim editing</strong> both revoke the session. The connector only listens on this computer.</p>
         </section>
         <section>
           <h2>Editor options</h2>
           <p>Use <strong>Language</strong> to switch between English and Simplified Chinese. <strong>Color mode</strong> can follow your system or stay in Light or Dark mode. Both settings are saved in this browser and also apply to this manual.</p>
-          <p>The gear opens <strong>Options</strong>, which also contains the current schematic's symbol template. Choose <strong>Wire crossings → Plain</strong> for straight crossings or <strong>Hop</strong> to show a bridge where wires cross without joining. Dots mark actual connections in either mode.</p>
+          <p>The gear or <kbd>O</kbd> opens <strong>Options</strong>, which also contains the current schematic's symbol template. Choose <strong>Wire crossings → Plain</strong> for straight crossings or <strong>Hop</strong> to show a bridge where wires cross without joining. Dots mark actual connections in either mode.</p>
           <p><strong>Wire angle</strong> sets the drawing mode to <strong>Orthogonal</strong>, <strong>45 Degree</strong>, or <strong>Free</strong>. The preference is saved in this browser.</p>
           <p><strong>Default text font</strong> sets the font for the current schematic's notes and net labels. Select an individual note or net label and choose <strong>Properties → Font</strong> to override it or return to <strong>Document default</strong>. These settings are included in schematic JSON and used for image export.</p>
           <p><strong>Options → Process</strong> sets the default device models for this schematic. Select a transistor, resistor, capacitor or inductor and use <strong>Properties → Device model</strong> to override its model. Choose <strong>Custom</strong> as the process to enter model names directly. A blank custom field uses the process default. The process and overrides are stored in the schematic JSON and used for SPICE and Spectre output.</p>
@@ -95,12 +95,12 @@
         <section>
           <h2>与 AI Agent 协作</h2>
           <p>在 Schematic Editor 源码目录运行 <code>npm run agent:connector</code>。在编辑器选择 <strong>AI → 交给 AI 修改 → 复制文本</strong>，将提示词粘贴给本机 Agent。若浏览器询问，请允许本地网络访问。配对码两分钟内可以使用一次，配对成功后会话最长持续两小时。</p>
-          <p>配对后，顶部绿条显示<strong>AI 已连接</strong>，仍可正常手工编辑。AI 事务按最新项目修订号提交，与手工操作使用同一个撤销历史。<strong>暂停连接</strong>会暂停 AI 访问。<strong>取消连接</strong>和<strong>收回编辑权</strong>都会撤销会话。连接器只监听本机。</p>
+          <p>弹窗中的<strong>当前状态</strong>会随人工编辑、等待配对、已连接、暂停和离线状态更新。配对后，顶部绿条显示<strong>AI 已连接</strong>，仍可正常手工编辑。AI 事务按最新项目修订号提交，与手工操作使用同一个撤销历史。<strong>暂停连接</strong>会暂停 AI 访问。<strong>取消连接</strong>和<strong>收回编辑权</strong>都会撤销会话。连接器只监听本机。</p>
         </section>
         <section>
           <h2>编辑器选项</h2>
           <p>通过 <strong>Language</strong> 在英文和简体中文之间切换。<strong>颜色模式</strong>可跟随系统，也可固定使用亮色或暗色。两项设置均保存在当前浏览器，并应用于本说明。</p>
-          <p>点击齿轮打开<strong>选项</strong>，可设置当前电路的符号模板。在 <strong>Wire crossings</strong> 中选择直线交叉（Plain）或跨线桥（Hop）。两种模式都用圆点表示真实连接。</p>
+          <p>点击齿轮或按 <kbd>O</kbd> 打开<strong>选项</strong>，可设置当前电路的符号模板。在 <strong>Wire crossings</strong> 中选择直线交叉（Plain）或跨线桥（Hop）。两种模式都用圆点表示真实连接。</p>
           <p>在<strong>导线角度</strong>中选择正交、45 度或自由布线。此偏好保存在当前浏览器。</p>
           <p>通过 <strong>Default text font</strong> 选择当前图纸的注释和网络标签默认字体。在<strong>属性 → 字体</strong>中可覆盖单个对象的字体，或恢复为文档默认值。这些设置随电路 JSON 保存，并用于图像导出。</p>
           <p><strong>选项 → 工艺</strong>决定当前原理图的默认器件模型。选中晶体管、电阻、电容或电感后，可在<strong>属性 → 器件模型</strong>中单独指定。工艺选择<strong>自定义</strong>时可直接输入模型名称，留空则采用工艺默认值。工艺和单个器件的模型设置随原理图 JSON 保存，并用于生成 SPICE 和 Spectre 网表。</p>

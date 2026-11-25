@@ -232,6 +232,16 @@
   width: min(640px, calc(100vw - 32px));
 }
 
+.schematic-agent-status-divider {
+  margin: 14px 0 0;
+  border: 0;
+  border-top: 1px solid var(--schematic-ui-line);
+}
+
+.schematic-agent-dialog [data-agent-state] {
+  margin: 10px 0 0;
+}
+
 .schematic-agent-banner:not([hidden]) {
   display: flex;
   flex-wrap: wrap;

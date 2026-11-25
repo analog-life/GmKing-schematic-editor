@@ -28,6 +28,7 @@ export function buildAgentDialog<T extends object>(ui: UiBuilder<T>, namespace: 
     ),
     el("p", {}, message("agent.local",
       "Start the local connector with npm run agent:connector, then copy the pairing prompt to your AI. The code expires after two minutes. A paired session lasts up to two hours.")),
+    el("div", { class: "schematic-agent-status-divider", role: "separator" }),
     el("p", { "data-agent-state": true, role: "status" }),
     el("textarea", {
       "data-agent-prompt": true, readonly: true, hidden: true, spellcheck: "false",
@@ -90,8 +91,9 @@ export function bindAgentDialog(root: HTMLElement, host: {
     const pauseMessage = status === "paused" ? message("agent.resume", "Resume") : message("agent.suspend", "Suspend");
     applySchematicMessage(suspend, pauseMessage);
     applySchematicMessage(bannerSuspend, pauseMessage);
-    applySchematicMessage(notice, view.isSecureContext ? STATUS[status] :
-      message("agent.secureContext", "Open the editor over HTTPS or localhost to connect."));
+    applySchematicMessage(notice, view.isSecureContext
+      ? message("agent.currentStatus", "Current status: {status}", { status: STATUS[status] })
+      : message("agent.secureContext", "Open the editor over HTTPS or localhost to connect."));
     applySchematicMessage(bannerNotice, STATUS[status]);
     banner.hidden = !active;
     banner.dataset.agentStatus = status;

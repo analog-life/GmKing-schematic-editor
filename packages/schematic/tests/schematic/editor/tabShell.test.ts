@@ -231,6 +231,8 @@ describe("renderSchematicTabShell", () => {
     const shell = renderSchematicTabShell();
     const toolbar = shell.match(/<div[^>]+class="schematic-toolbar"[^>]*>([\s\S]*?)<\/div>/)?.[1];
     expect(toolbar?.trimStart()).toMatch(/^<button[^>]+data-schematic-open-options/);
+    expect(toolbar).toContain('aria-keyshortcuts="O"');
+    expect(toolbar).toContain('title="Options (O)"');
     expect(toolbar?.trimEnd()).toMatch(/<a[^>]+href="\.\/manual\.html"[^>]+target="_blank"[^>]+data-schematic-help[\s\S]*?<\/a><button[^>]+data-schematic-open-agent[\s\S]*<\/button>$/);
     const agentId = toolbar?.match(/data-schematic-open-agent[^>]+aria-controls="([^"]+)"/)?.[1];
     expect(agentId).toBeTruthy();

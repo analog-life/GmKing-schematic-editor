@@ -38,6 +38,7 @@ try {
   token = pair.token;
   assert.equal((await rpc({ method: "pair", code: bootstrap.code })).code, "PAIRING_INVALID");
   await waitFor(page, () => document.querySelector("[data-agent-banner]").dataset.agentStatus === "connected", "AI did not connect");
+  assert.equal(await evaluate(page, () => document.querySelector("[data-agent-state]").textContent), "Current status: AI connected");
   assert.equal(await evaluate(page, () => document.querySelector("[data-agent-prompt]").value), "");
   await clickSelector(page, "[data-agent-close]");
 

@@ -44,6 +44,11 @@ try {
   assert.match(spectreBefore, /V1.*vsource pulse/);
   await clickSelector(page, "[data-netlist-format='spice']");
   await clickSelector(page, "[data-command='netlist']");
+  await evaluate(page, () => document.querySelector("[data-schematic-paper]").focus());
+  await key("o", "KeyO", 79);
+  await waitFor(page, () => document.querySelector("[data-schematic-options-dialog]")?.open, "O shortcut did not open Options");
+  assert.match(await evaluate(page, () => document.querySelector("[data-schematic-open-options]").title), /\(O\)/);
+  await clickSelector(page, "[data-schematic-options-close]");
   await options();
   assert.deepEqual(await preferences(), { language: "en", mode: "system", effective: "light" });
   await system("dark");
@@ -128,8 +133,14 @@ try {
   assert.deepEqual(await preferences(), { language: "zh-CN", mode: "dark", effective: "dark" });
   await clickSelector(page, "[data-schematic-open-agent]");
   assert.deepEqual(await agentActions(), ["交给 AI 修改"]);
+  assert(await evaluate(page, () => document.querySelector(".schematic-agent-status-divider")?.nextElementSibling
+    ?.matches("[data-agent-state]")), "AI status divider is missing");
+  assert.equal(await evaluate(page, () => document.querySelector("[data-agent-state]").textContent), "当前状态：人工编辑");
   await clickSelector(page, "[data-agent-connect]");
   assert.deepEqual(await agentActions(), ["复制文本", "暂停连接", "取消连接"]);
+  await waitFor(page, () => document.querySelector("[data-agent-state]")?.textContent === "当前状态：本机连接器离线",
+    "AI status did not follow the offline connector");
+  assert.equal(await evaluate(page, () => document.querySelector("[data-agent-state]").textContent), "当前状态：本机连接器离线");
   assert.match(await agentText(), /"sheetId": "top"/);
   assert(!(await agentText()).includes("Note α 原文"));
   await contrast("[data-agent-prompt]");

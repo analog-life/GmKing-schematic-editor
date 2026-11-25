@@ -80,8 +80,20 @@ export function bindSchematicWebOptions(root: HTMLElement, onLanguageChange: () 
     if (!event.key || event.key === wireAngleKey) applyWireAngle(parseWireAngle(read(wireAngleKey)));
   }, { signal });
 
-  root.querySelector("[data-schematic-open-options]")?.addEventListener("click", () => {
+  const openOptions = () => {
     if (!dialog.open) dialog.showModal();
+  };
+  root.querySelector("[data-schematic-open-options]")?.addEventListener("click", openOptions, { signal });
+  view.addEventListener("keydown", event => {
+    if (event.defaultPrevented || event.repeat || event.isComposing || event.key.toLowerCase() !== "o"
+      || event.ctrlKey || event.metaKey || event.altKey || root.querySelector("dialog[open]")) return;
+    const target = event.target as Element | null;
+    if (target && target !== ownerDocument.body && target !== html) {
+      if (!root.contains(target) || target.closest('input, select, textarea, [contenteditable="true"]')) return;
+    }
+    event.preventDefault();
+    event.stopPropagation();
+    openOptions();
   }, { signal });
   dialog.querySelector("[data-schematic-options-close]")?.addEventListener("click", () => dialog.close(), { signal });
   dialog.addEventListener("keydown", event => {
